@@ -5,10 +5,13 @@ const refs = {
   bodyEl: document.body,
 };
 //зміна для зміни кольору
+
 let colorId = null;
+
 // слухачі
 refs.dataStart.addEventListener('click', onRandomHexColor);
 refs.dataStop.addEventListener('click', stopRandomHexColor);
+refs.dataStop.setAttribute('disabled', true);
 
 //запускає рендомність кольорів
 function onRandomHexColor(element) {
@@ -19,9 +22,9 @@ function onRandomHexColor(element) {
 
   if (!refs.dataStart) {
     refs.dataStart.removeAttribute('disabled');
-  } else {
-    refs.dataStart.setAttribute('disabled', true);
   }
+  refs.dataStart.setAttribute('disabled', true);
+  refs.dataStop.removeAttribute('disabled');
 }
 //зупиняє ремдомність кольорів
 
@@ -29,8 +32,10 @@ function stopRandomHexColor() {
   clearInterval(colorId);
 
   if (refs.dataStop) {
-    refs.dataStart.removeAttribute('disabled');
+    refs.dataStop.removeAttribute('disabled');
   }
+  refs.dataStop.setAttribute('disabled', true);
+  refs.dataStart.removeAttribute('disabled');
 }
 
 //генерування випадкового кольору
