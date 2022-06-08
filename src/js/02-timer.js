@@ -42,11 +42,7 @@ function timeTimer() {
     if (!interval) {
       refs.dataStart.removeAttribute('disabled');
     }
-    const { days, hours, minutes, seconds } = convertMs(ms);
-    refs.dataDays.textContent = days;
-    refs.dataHours.textContent = hours;
-    refs.dataMinutes.textContent = minutes;
-    refs.dataSeconds.textContent = seconds;
+    setContent(ms);
   } else {
     if (interval !== null) {
       clearInterval(interval);
@@ -57,7 +53,14 @@ function timeTimer() {
     refs.dataStart.setAttribute('disabled', true);
   }
 }
-
+//додає контент
+function setContent(ms) {
+  const { days, hours, minutes, seconds } = convertMs(ms);
+  refs.dataDays.textContent = days;
+  refs.dataHours.textContent = hours;
+  refs.dataMinutes.textContent = minutes;
+  refs.dataSeconds.textContent = seconds;
+}
 //запускає
 function onDataStart() {
   interval = setInterval(timeTimer, 1000);
