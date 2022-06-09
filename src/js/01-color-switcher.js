@@ -19,13 +19,13 @@ function onRandomHexColor(element) {
     const randomColor = getRandomHexColor(element);
     document.body.style.backgroundColor = randomColor;
   }, 1000);
-
   if (!refs.dataStart) {
     refs.dataStart.removeAttribute('disabled');
   }
   refs.dataStart.setAttribute('disabled', true);
   refs.dataStop.removeAttribute('disabled');
 }
+
 //зупиняє ремдомність кольорів
 
 function stopRandomHexColor() {
