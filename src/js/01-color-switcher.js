@@ -19,11 +19,8 @@ function onRandomHexColor(element) {
     const randomColor = getRandomHexColor(element);
     document.body.style.backgroundColor = randomColor;
   }, 1000);
-  if (!refs.dataStart) {
-    refs.dataStart.removeAttribute('disabled');
-  }
-  refs.dataStart.setAttribute('disabled', true);
-  refs.dataStop.removeAttribute('disabled');
+
+  setRemAttribute(refs.dataStart, refs.dataStop);
 }
 
 //зупиняє ремдомність кольорів
@@ -31,11 +28,13 @@ function onRandomHexColor(element) {
 function stopRandomHexColor() {
   clearInterval(colorId);
 
-  if (refs.dataStop) {
-    refs.dataStop.removeAttribute('disabled');
-  }
-  refs.dataStop.setAttribute('disabled', true);
-  refs.dataStart.removeAttribute('disabled');
+  setRemAttribute(refs.dataStop, refs.dataStart);
+}
+
+// для кнопок
+function setRemAttribute(btnToDisabled, btnToEnable) {
+  btnToDisabled.setAttribute('disabled', true);
+  btnToEnable.removeAttribute('disabled');
 }
 
 //генерування випадкового кольору
